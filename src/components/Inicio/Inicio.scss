@@ -1,0 +1,76 @@
+.inicio-section {
+  position: relative;
+  height: 100vh;
+  background-image: url('/src/assets/igreja.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 5%;
+  overflow: hidden;
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    z-index: 1;
+  }
+
+  .conteudo {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    text-align: right;
+    color: #fff;
+
+    .textos {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+      }
+
+      p {
+        font-size: 1.25rem;
+        color: #e0e0e0;
+        line-height: 1.6;
+      }
+
+      .btn-rolar {
+        align-self: end;
+        background-color: #ffffffcc;
+        border: none;
+        padding: 0.8rem 1.4rem;
+        border-radius: 10px;
+        font-weight: 600;
+        color: #222;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1rem;
+        transition: all 0.3s;
+
+        &:hover {
+          background-color: #fff;
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+}
