@@ -7,7 +7,7 @@ import Galeria from '../../components/Galeria/Galeria'
 import Contato from '../../components/Contato/Contato'
 import Rodape from '../../components/Rodape/Rodape'
 
-import './home.scss'
+import './Home.scss'
 
 export default function Home() {
   return (
