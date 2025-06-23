@@ -1,91 +1,141 @@
-.eventos-carrossel-container {
-  padding: 2rem;
-  font-family: 'Nunito', sans-serif;
+.carrossel-eventos {
+  position: relative;
+  background: linear-gradient(to bottom, #e6ecff, #ffffff);
+  padding: 2rem 0;
+  border-radius: 12px;
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box; /* garantir box-sizing geral */
 
-  .carrossel-wrapper {
-    position: relative;
-    /* overflow escondia as bordas, bora tirar */
-    /* overflow: hidden; */
-    padding: 1rem 3rem;
-  }
-
-  .cards {
+  .container-cards {
     display: flex;
-    transition: transform 0.5s ease;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
     gap: 1rem;
+    padding: 0 2rem; /* padding lateral */
+    width: 100%;
+    box-sizing: border-box;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
-  .card {
+  .card-evento {
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    min-width: 230px;
-    max-width: 230px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    padding: 1rem;
+    min-width: calc(300px);
+    max-width: calc(300px);
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    opacity: 0.7;
+    transform: scale(0.9);
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     cursor: pointer;
-    overflow: hidden;
-    position: relative;
-    z-index: 5;
+    box-sizing: border-box;
+
+    &:hover {
+      opacity: 1;
+      transform: scale(1.03);
+      z-index: 5;
+    }
 
     &.ativo {
-      transform: scale(1.05);
-      z-index: 10; /* ativo por cima */
+      transform: scale(1.02);
+      opacity: 1;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      z-index: 4;
     }
 
-    &.evento-hoje {
-      border: 3px solid #27ae60 !important;
-      box-shadow: 0 0 12px #27ae60aa !important;
+    &.passado {
+      filter: grayscale(0.6);
+      opacity: 0.5;
+      pointer-events: none;
     }
 
-    &.evento-atual {
-      border: 3px solid #e74c3c !important;
-      box-shadow: 0 0 14px #e74c3caa !important;
+    &.ao-vivo {
+      border: 2px solid #ef4444;
+    }
+
+    &.eh-hoje {
+      border: 2px solid #f97316;
     }
 
     img {
       width: 100%;
-      height: 140px;
+      height: 180px;
       object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      pointer-events: none;
     }
 
-    h4 {
-      padding: 0.5rem 1rem 0.3rem;
-      font-size: 1.1rem;
-      font-weight: 700;
+    .categoria {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: #aaa;
+
+      &.culto {
+        background-color: #8b5cf6;
+      }
+      &.juventude {
+        background-color: #60a5fa;
+      }
+      &.casais {
+        background-color: #f59e0b;
+      }
+      &.palestra {
+        background-color: #10b981;
+      }
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+      color: #111827;
     }
 
     p {
-      padding: 0 1rem 0.8rem;
       font-size: 0.9rem;
-      color: #444;
+      color: #4b5563;
     }
 
-    .contagem-regressiva {
+    .contador {
+      margin-top: 0.5rem;
       font-weight: bold;
-      color: #27ae60;
-    }
+      color: #f97316;
 
-    .tag-ao-vivo {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background-color: red;
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.3rem 0.5rem;
-      border-radius: 5px;
-      animation: pulse 1s infinite alternate;
-    }
-
-    @keyframes pulse {
-      from {
-        transform: scale(1);
-        opacity: 0.8;
+      &.finalizado {
+        color: #22c55e;
       }
-      to {
-        transform: scale(1.1);
-        opacity: 1;
+    }
+
+    .tag-live {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background: #ef4444;
+      color: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-weight: bold;
+      text-decoration: none;
+
+      &:hover {
+        background: #b91c1c;
       }
     }
   }
@@ -94,88 +144,71 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: #333;
-    color: #fff;
+    background: #ffffffcc;
     border: none;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
+    font-size: 1.8rem;
     cursor: pointer;
-    opacity: 0.6;
-    z-index: 20;
+    border-radius: 50%;
+    padding: 0.4rem 0.6rem;
+    transition: background 0.2s;
+    z-index: 10;
 
     &:hover {
-      opacity: 1;
+      background: #ffffff;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
 
     &.esquerda {
-      left: 10px;
+      left: 1rem;
     }
 
     &.direita {
-      right: 10px;
+      right: 1rem;
     }
   }
 
-  .modal-fundo {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(2px);
+  .paginacao {
+    margin-top: 1rem;
     display: flex;
-    align-items: center;
     justify-content: center;
-    z-index: 10000;
-  }
+    gap: 0.5rem;
 
-  .modal-conteudo {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    max-width: 500px;
-    width: 90%;
-    position: relative;
-
-    img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-      object-fit: cover;
-      max-height: 250px;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      margin-bottom: 0.8rem;
-      color: #555;
-    }
-
-    .btn-detalhes {
-      background-color: #3498db;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
+    .ponto {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      transition: background 0.3s;
+      cursor: pointer;
 
       &:hover {
-        background-color: #2980b9;
+        background: #93c5fd;
+      }
+
+      &.ativo {
+        background: #3b82f6;
       }
     }
+  }
+}
 
-    .fechar {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: transparent;
-      font-size: 1.5rem;
-      border: none;
-      cursor: pointer;
+@media (max-width: 768px) {
+  .carrossel-eventos {
+    padding: 1rem;
+
+    .container-cards {
+      gap: 0.7rem;
+      padding: 0 1rem;
+    }
+
+    .card-evento {
+      min-width: 90%;
+      max-width: 90%;
+    }
+
+    .seta {
+      font-size: 1.4rem;
+      padding: 0.3rem 0.5rem;
     }
   }
 }
