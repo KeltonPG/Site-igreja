@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { FaArrowDown } from 'react-icons/fa'
-import FadeInSection from '../FadeInSection/FadeInSection'
+import FadeInSection from '../../../../components/FadeInSection/FadeInSection'
 import './Inicio.scss'
 
 export default function Inicio() {
@@ -10,7 +10,7 @@ export default function Inicio() {
     setTimeout(() => setFadeIn(true), 200)
   }, [])
 
-  const rolarParaHorarios = () => {
+  const rolarParaEventos = () => {
     const section = document.getElementById('eventos')
     if (section) section.scrollIntoView({ behavior: 'smooth' })
   }
@@ -26,7 +26,7 @@ export default function Inicio() {
               Uma igreja comprometida com a fé, amor e transformação de vidas
               por meio da palavra de Deus.
             </p>
-            <button className="btn-rolar" onClick={rolarParaHorarios}>
+            <button className="btn-rolar" onClick={rolarParaEventos}>
               <FaArrowDown /> Ver eventos
             </button>
           </div>

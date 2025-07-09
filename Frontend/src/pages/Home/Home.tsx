@@ -1,10 +1,10 @@
 import FadeInSection from '../../components/FadeInSection/FadeInSection'
 
 import Header from '../../components/Cabecalho/Cabecalho'
-import Inicio from '../../components/Inicio/Inicio'
-import Eventos from '../../components/Eventos/Eventos'
-import Galeria from '../../components/Galeria/Galeria'
-import Contato from '../../components/Contato/Contato'
+import Inicio from './Components/Inicio/Inicio'
+import Eventos from './Components/Eventos/Eventos'
+import Galeria from './Components/Galeria/Galeria'
+import Contato from './Components/Contato/Contato'
 import Rodape from '../../components/Rodape/Rodape'
 
 import './Home.scss'

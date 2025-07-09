@@ -14,7 +14,7 @@ export default function Header() {
           }
         })
       },
-      { threshold: 0.6 }
+      { threshold: 0.2 }
     )
 
     sections.forEach((section) => observer.observe(section))
@@ -28,7 +28,7 @@ export default function Header() {
 
         <ul className="nav-links">
           <li>
-            <a href="#cabecalho" className={active === 'inicio' ? 'active' : ''}>Início</a>
+          <a href="#inicio" className={active === 'inicio' ? 'active' : ''}>Início</a>
           </li>
           <li>
             <a href="#eventos" className={active === 'eventos' ? 'active' : ''}>Eventos</a>

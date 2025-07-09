@@ -46,7 +46,7 @@
       left: 0;
       height: 2px;
       width: 0%;
-      background-color: #0077cc;
+      background-color: #000000;
       transition: width 0.3s ease;
     }
 
@@ -56,7 +56,7 @@
     }
 
     &.active {
-      color: #0077cc;
+      color: #000000;
     }
   }
 }
