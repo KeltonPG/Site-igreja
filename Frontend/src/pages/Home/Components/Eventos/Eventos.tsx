@@ -21,7 +21,7 @@ export default function Eventos() {
       id: 0,
       titulo: 'Culto do Dia',
       data: hoje,
-      horario: '18:00',
+      horario: '17:00',
       duracaoMinutos: 60,
       descricao: 'Culto especial para a comunidade com louvor e palavra.',
       imagem: 'https://picsum.photos/400/250?random=1',
@@ -182,10 +182,6 @@ export default function Eventos() {
                 </p>
               )}
               {evento.linkLive && emAndamento && (
-                <a href={evento.linkLive} target="_blank" className="tag-live" rel="noreferrer">🔴 Ao Vivo</a>
-              )}
-              {/* Mostrar "Ao Vivo" mesmo sem ser ativo */}
-              {!ativo && evento.linkLive && emAndamento && (
                 <a href={evento.linkLive} target="_blank" className="tag-live" rel="noreferrer">🔴 Ao Vivo</a>
               )}
             </div>

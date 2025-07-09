@@ -5,7 +5,7 @@
   border-radius: 12px;
   text-align: center;
   overflow: hidden;
-  box-sizing: border-box; /* garantir box-sizing geral */
+  box-sizing: border-box;
 
   .container-cards {
     display: flex;
@@ -14,7 +14,7 @@
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     gap: 1rem;
-    padding: 0 2rem; /* padding lateral */
+    padding: 0 2rem;
     width: 100%;
     box-sizing: border-box;
 
@@ -29,8 +29,8 @@
     background: #fff;
     border-radius: 12px;
     padding: 1rem;
-    min-width: calc(300px);
-    max-width: calc(300px);
+    min-width: 300px;
+    max-width: 300px;
     flex-shrink: 0;
     scroll-snap-align: center;
     opacity: 0.7;
@@ -60,14 +60,23 @@
       filter: grayscale(0.6);
       opacity: 0.5;
       pointer-events: none;
+      border-color: #9ca3af;
+    }
+
+    &.passado:hover {
+      opacity: 0.5 !important;
+      transform: none !important;
+      cursor: default !important;
+      z-index: 0 !important;
+      box-shadow: none !important;
     }
 
     &.ao-vivo {
-      border: 2px solid #ef4444;
+      border: 2px solid #22c55e; /* verde para evento ocorrendo */
     }
 
     &.eh-hoje {
-      border: 2px solid #f97316;
+      border: 2px solid #f97316; /* laranja para evento do dia */
     }
 
     img {
