@@ -13,15 +13,22 @@
     align-items: stretch;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    gap: 1rem;
-    padding: 0 2rem;
+    gap: 1.5rem;
+    padding: 0 3rem;
     width: 100%;
     box-sizing: border-box;
-
     scrollbar-width: none;
     -ms-overflow-style: none;
+    overflow-y: hidden;
+    overflow-x: 6rem; 
+
     &::-webkit-scrollbar {
       display: none;
+    }
+
+    .spacer {
+      min-width: 140px; // metade do min-width do card-evento (ajuste se necessário)
+      pointer-events: none;
     }
   }
 
@@ -42,18 +49,12 @@
     align-items: center;
     cursor: pointer;
     box-sizing: border-box;
-
-    &:hover {
-      opacity: 1;
-      transform: scale(1.03);
-      z-index: 5;
-    }
-
-    &.ativo {
-      transform: scale(1.02);
-      opacity: 1;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-      z-index: 4;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.4s, z-index 0s;
+    &:hover, &.ativo {
+      transform: scale(1.08);
+      z-index: 10;
     }
 
     &.passado {
@@ -77,6 +78,13 @@
 
     &.eh-hoje {
       border: 2px solid #f97316; /* laranja para evento do dia */
+    }
+
+    &:first-child {
+      margin-left: 2rem;
+    }
+    &:last-child {
+      margin-right: 2rem;
     }
 
     img {
